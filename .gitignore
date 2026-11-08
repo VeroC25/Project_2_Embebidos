@@ -1,0 +1,26 @@
+# Archivos generados por Yocto.
+yocto/build/
+yocto/tmp/
+yocto/downloads/
+yocto/sstate-cache/
+
+# Binarios precompilados de Ollama.
+yocto/meta-solarcare/recipes-ai/ollama/files/ollama-cpu/
+
+# Modelos de inteligencia artificial.
+*.gguf
+*.safetensors
+solarcare-modelos/
+
+# Imágenes del sistema operativo.
+*.wic
+*.wic.bz2
+*.wic.gz
+*.ext4
+
+# Archivos temporales y respaldos.
+*.bak
+*.swp
+*~
+__pycache__/
+*.pyc

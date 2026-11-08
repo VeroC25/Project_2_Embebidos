@@ -1,0 +1,17 @@
+[Unit]
+Description=SolarCare AI - Agente de inteligencia artificial
+Wants=network-online.target
+After=network-online.target ollama.service
+
+[Service]
+Type=simple
+
+# Ejecutar el agente Python cuando esté instalado.
+ExecStart=/usr/bin/python3 /usr/bin/solarcare-agent.py
+
+# Permitir que el agente se recupere de fallos de ejecución.
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

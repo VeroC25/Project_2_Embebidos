@@ -1,0 +1,16 @@
+[Unit]
+Description=SolarCare AI - Detector de anomalías
+After=network.target
+
+[Service]
+Type=simple
+
+# Ejecutar el detector Python cuando esté instalado.
+ExecStart=/usr/bin/python3 /usr/bin/solarcare-detector.py
+
+# Reiniciar el detector si termina inesperadamente.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
