@@ -1,0 +1,12 @@
+[Unit]
+Description=SolarCare AI - Expansion del almacenamiento
+After=local-fs.target
+Before=multi-user.target
+ConditionPathExists=/dev/mmcblk0p2
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/solarcare-expand-rootfs.sh
+
+[Install]
+WantedBy=multi-user.target
