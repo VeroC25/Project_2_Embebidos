@@ -1,17 +1,16 @@
 [Unit]
-Description=SolarCare AI - Agente de inteligencia artificial
-Wants=network-online.target
-After=network-online.target ollama.service
+Description=SolarCare AI - Procesamiento de eventos con IA
+Wants=ollama.service
+After=ollama.service
 
 [Service]
-Type=simple
+Type=oneshot
+WorkingDirectory=/opt/solarcare
 
-# Ejecutar el agente Python cuando esté instalado.
-ExecStart=/usr/bin/python3 /usr/bin/solarcare-agent.py
+# Procesar los eventos pendientes mediante los modelos de IA.
+ExecStart=/usr/bin/python3 -u /opt/solarcare/trabajador_ia.py
 
-# Permitir que el agente se recupere de fallos de ejecución.
-Restart=on-failure
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
+# Conservar los resultados generados por el trabajador.
+StateDirectory=solarcare
+StandardOutput=journal
+StandardError=journal

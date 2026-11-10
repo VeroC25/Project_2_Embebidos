@@ -1,0 +1,11 @@
+[Unit]
+Description=SolarCare AI - Temporizador del trabajador de IA
+
+[Timer]
+OnBootSec=60s
+OnUnitInactiveSec=60s
+Unit=solarcare-agent.service
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
