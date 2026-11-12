@@ -1,16 +1,23 @@
 [Unit]
-Description=SolarCare AI - Detector de anomalías
-After=network.target
+Description=SolarCare AI - Monitor de anomalías
+After=local-fs.target
 
 [Service]
 Type=simple
+WorkingDirectory=/opt/solarcare
+Environment="TZ=CST6"
 
-# Ejecutar el detector Python cuando esté instalado.
-ExecStart=/usr/bin/python3 /usr/bin/solarcare-detector.py
+# Ejecutar continuamente el monitor y publicar los eventos detectados.
+ExecStart=/usr/bin/python3 -u /opt/solarcare/monitor_diario_solarcare.py --raiz "/var/lib/solarcare/datos/Inversor 2" --continuo --intervalo 10 --verificar-datos --publicar-estados --seguimiento-estado --publicar-electricas --salidas /var/lib/solarcare/salidas
 
-# Reiniciar el detector si termina inesperadamente.
+# Recuperar el monitor ante fallos de ejecución.
 Restart=on-failure
 RestartSec=5
+
+# Mantener los resultados en un directorio persistente.
+StateDirectory=solarcare
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target

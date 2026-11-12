@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f2">
+  <meta name="description" content="SolarCare AI · Monitoreo y diagnóstico fotovoltaico del inversor 2 del SESLAB.">
+  <title>SolarCare AI · Centro de monitoreo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-label="SolarCare AI">
+      <span class="brand-symbol" aria-hidden="true">
+        <svg viewBox="0 0 50 48" width="50" height="48"><path d="M25 5v5m-12-1 4 4m21-4-4 4m-17 6h-5m31 0h-5" stroke="#eca52a" stroke-width="2.8" stroke-linecap="round"/><path d="M14 25a11 11 0 0 1 22 0" fill="#f6b33d"/><path d="M9 28h32l6 17H3z" fill="#235575"/><path d="M10 36h30M20 28l-3 17M30 28l3 17" stroke="#fdfbf5" stroke-width="2"/></svg>
+      </span>
+      <strong>SolarCare <em>AI</em></strong>
+      <span class="brand-divider"></span>
+      <small>Monitoreo y diagnóstico del sistema fotovoltaico</small>
+    </div>
+    <div class="header-right">
+      <span class="header-chip"><span class="chip-dot"></span><span id="header-status">Consultando archivos</span></span>
+      <span class="header-location">SESLAB · TEC</span>
+      <span id="header-clock" class="header-clock">Inversor 2</span>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Navegación">
+      <nav>
+        <a class="nav-item active" href="#inicio" data-nav="inicio"><span class="nav-icon">⌂</span>Inicio</a>
+        <a class="nav-item" href="#monitoreo" data-nav="monitoreo"><span class="nav-icon">▥</span>Monitoreo</a>
+        <a class="nav-item" href="#anomalias" data-nav="anomalias"><span class="nav-icon">⚠</span>Anomalías</a>
+        <a class="nav-item" href="#anomalias" data-nav="historial"><span class="nav-icon">◷</span>Historial</a>
+        <a class="nav-item" href="#diagnostico" data-nav="diagnostico"><span class="nav-icon">✧</span>Diagnóstico</a>
+      </nav>
+      <div class="sidebar-art" aria-hidden="true">
+        <svg viewBox="0 0 190 155" width="190" height="155"><path d="M0 55Q36 25 70 59T143 61T190 52V155H0Z" fill="#f3dc9b" opacity=".62"/><path d="M0 83Q43 51 81 82T190 80V155H0Z" fill="#cbd8a9"/><path d="M0 107Q57 89 110 119T190 99V155H0Z" fill="#a9c69b"/><path d="M48 97h89l17 40H30z" fill="#245678"/><path d="M46 115h98M67 97l-9 40M94 97v40M119 97l8 40" stroke="#eef6ee" stroke-width="2"/><path d="M34 138h124" stroke="#57774a" stroke-width="5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="sidebar-bottom">SolarCare AI · v2<br>SESLAB — TEC</div>
+    </aside>
+
+    <main class="main" id="inicio">
+      <div class="page-heading"><div><h1>Inversor 2 <span class="heading-separator"></span><small>Resumen de operación</small></h1><p>Seguimiento eléctrico y anomalías del sistema fotovoltaico</p></div></div>
+      <div class="notice" id="notice" role="status">Consultando las mediciones disponibles...</div>
+
+      <section class="metrics" aria-label="Resumen de mediciones">
+        <article class="metric card tone-green"><div class="metric-title"><span class="metric-icon">ϟ</span>Potencia registrada</div><div class="metric-value" id="power">— <small>kW</small></div><div class="metric-hint">Última medición disponible</div></article>
+        <article class="metric card tone-sage"><div class="metric-title"><span class="metric-icon">Ⓥ</span>Tensión CC (prom.)</div><div class="metric-value" id="avg-voltage">— <small>V</small></div><div class="metric-hint">Promedio de cuatro entradas</div></article>
+        <article class="metric card tone-sage"><div class="metric-title"><span class="metric-icon">∿</span>Corriente CC (prom.)</div><div class="metric-value" id="avg-current">— <small>A</small></div><div class="metric-hint">Promedio de cuatro entradas</div></article>
+        <article class="metric card tone-blue"><div class="metric-title"><span class="metric-icon">▦</span>Energía estimada</div><div class="metric-value" id="energy">— <small>kWh</small></div><div class="metric-hint" id="energy-note">Integración de muestras CSV</div></article>
+      </section>
+
+      <section class="card chart-panel" id="monitoreo" aria-labelledby="chart-heading">
+        <div class="section-title"><div><span class="title-icon">▥</span><h2 id="chart-heading">Generación del Inversor 2</h2></div><div class="chart-legend"><span class="legend-line"></span>Potencia (kW)&nbsp;&nbsp;<span class="legend-dot"></span>Evento seleccionado</div></div>
+        <div class="chart" id="chart" role="img" aria-label="Gráfico de potencia del inversor 2"></div>
+        <p class="chart-note" id="chart-note">Curva calculada a partir de las muestras disponibles.</p>
+      </section>
+
+      <section class="card history-panel" id="anomalias" aria-labelledby="history-heading">
+        <div class="section-title"><div><span class="title-icon warn">⚠</span><h2 id="history-heading">Historial de anomalías</h2></div><span class="history-subtitle">Seleccioná un evento para ver el diagnóstico →</span></div>
+        <div class="table-wrap"><table class="data-table events-table"><thead><tr><th>Fecha y hora</th><th>Tipo de anomalía</th><th>Descripción</th><th>Estado IA</th></tr></thead><tbody id="alerts-body"><tr><td colspan="4">Cargando...</td></tr></tbody></table></div>
+      </section>
+    </main>
+
+    <aside class="analysis-column" aria-label="Estado y diagnóstico">
+      <section class="card date-card"><label for="day-picker">▦ &nbsp; Fecha de análisis</label><div class="date-picker"><input type="date" id="day-picker" aria-label="Fecha de análisis"><button id="prev-day" type="button" aria-label="Día anterior">‹</button><button id="next-day" type="button" aria-label="Día siguiente">›</button></div></section>
+      <section class="card system-card"><div class="system-row"><span class="system-icon">✓</span><div><h2>Estado de los datos</h2><strong id="data-state">Consultando...</strong><p id="last-measurement">Última medición: —</p></div></div><small>No indica el estado físico del inversor.</small></section>
+      <section class="card diagnosis" id="diagnostico" aria-labelledby="diagnosis-heading">
+        <div class="section-title"><div><span class="title-icon">✧</span><h2 id="diagnosis-heading">Diagnóstico inteligente</h2></div></div>
+        <p class="block-label">Evento seleccionado</p>
+        <div class="selected-alert" id="selected-alert">Seleccioná una anomalía</div>
+        <div class="event-details"><div><span>Fecha y hora</span><strong id="selected-date">—</strong></div><div><span>Inversor</span><strong id="selected-inverter">—</strong></div><div><span>Duración</span><strong id="selected-duration">—</strong></div></div>
+        <div class="section-divider"></div>
+        <div class="model-heading"><span class="cube">◇</span><h3>Tev1 <small>· Evaluación del evento</small></h3><strong class="score" id="tev-score">—</strong></div>
+        <p class="model-caption">Puntuación de revisión; no es probabilidad de falla.</p>
+        <div class="section-divider"></div>
+        <div class="model-heading"><span class="cube">♧</span><h3>Qwen3 <small>· Interpretación técnica</small></h3></div>
+        <p class="analysis-text" id="ai-explanation">Seleccioná un evento para consultar su análisis.</p>
+        <h4 class="causes-title">Posibles causas · hipótesis</h4><ul id="ai-causes"><li>Sin evento seleccionado.</li></ul>
+        <h4 class="recommendation-title">Recomendación</h4><p class="recommendation" id="ai-recommendation">—</p>
+      </section>
+      <section class="card reading-card" aria-labelledby="readings-heading"><div class="section-title"><div><span class="title-icon">▦</span><h2 id="readings-heading">Mediciones por entrada (CC)</h2></div></div><table class="data-table"><thead><tr><th>Entrada</th><th>Corriente (A)</th><th>Tensión (V)</th></tr></thead><tbody id="readings-body"><tr><td colspan="3">Cargando...</td></tr></tbody></table></section>
+    </aside>
+
+    <aside class="card assistant" aria-label="Chat con SolarCare AI">
+      <div class="assistant-head"><div class="assistant-title"><span class="assistant-avatar">✦</span><div><h2>Asistente SolarCare AI</h2><p>Consultas sobre anomalías y mediciones</p></div></div><span class="assistant-badge" id="chat-status">QWEN3 · LOCAL</span></div>
+      <div class="chat-messages" id="chat-messages" role="log" aria-live="polite"><div class="message assistant-message"><span class="message-avatar">✦</span><div class="bubble">¡Hola! Soy SolarCare AI. Podés preguntarme sobre la anomalía seleccionada y sus mediciones. Mis respuestas son informativas y requieren Ollama con Qwen3 disponible.</div></div></div>
+      <form class="chat-form" id="chat-form"><label for="chat-question" class="sr-only">Escribí tu pregunta</label><input type="text" id="chat-question" name="pregunta" placeholder="Escribí tu pregunta..." maxlength="1200" autocomplete="off" required><button type="submit" id="send-chat" aria-label="Enviar pregunta">➤</button></form>
+      <p class="chat-disclaimer">Asistencia técnica · No controla equipos.</p>
+    </aside>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+# Dependencias Python externas usadas en el prototipo; versiones exactas no registradas.
+flask
+ollama
