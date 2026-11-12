@@ -12,6 +12,12 @@ SolarCare AI complementa el sistema de monitoreo existente del SESLAB mediante e
 
 El sistema identifica comportamientos anómalos y utiliza modelos de inteligencia artificial ejecutados localmente para generar interpretaciones y recomendaciones técnicas.
 
+## Documentación técnica
+
+La documentación detallada del proyecto está organizada en [docs/README.md](docs/README.md), con nueve documentos numerados del 01 al 09. Contiene el contexto y los objetivos originales, la trazabilidad de los 24 requisitos, arquitectura, detector, inteligencia artificial, interfaz, Yocto, pruebas y resultados preliminares. Incluye también una [plantilla de evidencia](docs/evidencias/plantilla_registro_prueba.md) para registrar las verificaciones finales.
+
+**Importante:** los resultados locales de Ubuntu se distinguen de las verificaciones todavía pendientes sobre Raspberry Pi con Yocto.
+
 ## Arquitectura
 
 El flujo principal es:
@@ -94,7 +100,8 @@ Tres casos dependen de registros históricos del SESLAB y se omiten cuando dicho
 - Chat contextual: funcional en Ubuntu.
 - Integración con Yocto: en desarrollo.
 - Validación en Raspberry Pi: pendiente.
-- Acceso automático a los CSV del SESLAB: pendiente.
+- Conectividad con la máquina virtual del SESLAB y consulta de CSV recientes: **reportadas por el equipo**, con retraso observado y sin evidencia sistemática de latencia adjunta.
+- Acceso automático a los CSV del SESLAB: pendiente de validación desde Raspberry Pi.
 
 ## Consideraciones
 
