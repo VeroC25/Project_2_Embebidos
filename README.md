@@ -76,7 +76,7 @@ Ubicación: `yocto/meta-solarcare/`
 
 Contiene las recetas y configuraciones del sistema operativo embebido.
 
-La integración y validación en Raspberry Pi están pendientes.
+Según el avance comunicado el 12 de noviembre de 2026, **la imagen Yocto ya fue compilada y grabada en microSD** y se comprobó que incluye soporte CIFS para el acceso previsto a archivos SMB. **El arranque y la validación integral en Raspberry Pi siguen pendientes.**
 
 ## Pruebas
 
@@ -98,7 +98,7 @@ Tres casos dependen de registros históricos del SESLAB y se omiten cuando dicho
 - Agente Tev1 y Qwen3: funcional en Ubuntu.
 - Interfaz web: funcional en Ubuntu.
 - Chat contextual: funcional en Ubuntu.
-- Integración con Yocto: en desarrollo.
+- Integración con Yocto: **imagen compilada y grabada en microSD según reporte del equipo**; falta evidencia de arranque y operación.
 - Validación en Raspberry Pi: pendiente.
 - Conectividad con la máquina virtual del SESLAB y consulta de CSV recientes: **reportadas por el equipo**, con retraso observado y sin evidencia sistemática de latencia adjunta.
 - Acceso automático a los CSV del SESLAB: pendiente de validación desde Raspberry Pi.
