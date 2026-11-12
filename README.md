@@ -13,13 +13,15 @@ El prototipo probado el **12 de noviembre de 2026** integra detector, agente de 
 ## Documentación
 
 - **[Estado de integración, pruebas, correcciones y pendientes — 12/11/2026](docs/estado-integracion-2026-11-12.md)**: registro técnico de la sesión, comandos de consulta, evidencias, riesgos y análisis de viabilidad del modo manual de CSV.
-- **[Capa Yocto meta-solarcare](yocto/meta-solarcare/)**: recetas de imagen, Ollama, servicios de SolarCare y almacenamiento.
+- **[Guía para recuperar SolarCare AI en otra Raspberry Pi](docs/instalacion-otra-raspberry.md)**: transferencia por SSH, servicios, dependencias, modelos y datos.
+- **[Código recuperado de la Raspberry Pi](yocto/meta-solarcare/recipes-apps/solarcare/files/solarcare/)**: detector, agente y dashboard Flask.
+- **[Capa Yocto meta-solarcare](yocto/meta-solarcare/)**: recetas de imagen, Ollama, aplicación y almacenamiento.
 - **Propuesta de diseño**: PDF disponible en la raíz del repositorio.
 
 ## Estado y próximos pasos
 
 - **Verificado en sesión:** arranque de la Raspberry Pi, acceso de solo lectura a datos del SESLAB, detección de un evento de interrupción de generación, ejecución local de Tev1 y Qwen3, dashboard y chat.
-- **Pendiente:** revisar JEV, incorporar al control de versiones los scripts y ajustes que se aplicaron manualmente, validar recetas y procedimiento reproducible, montaje SMB persistente, reinicio autónomo, pruebas de fallos y bitácoras.
+- **Pendiente:** revisar JEV, validar la nueva receta de aplicación mediante BitBake y comprobar dependencias, modelos y procedimiento reproducible, montaje SMB persistente, reinicio autónomo, pruebas de fallos y bitácoras.
 - **Análisis manual de CSV:** se evaluó su viabilidad, pero **no se implementó**.
 
-> **Nota:** Las recetas presentes en Git no deben confundirse con una instalación completamente reproducible. La documentación separa lo verificado de las tareas pendientes. No publicar credenciales ni detalles de acceso privado al SESLAB.
+> **Nota (12/11/2026):** Se respaldaron en Git los scripts, el dashboard y las unidades systemd recuperadas de la Raspberry Pi. La receta de la aplicación fue actualizada para empaquetarlos, pero **no se ha compilado ni validado una nueva imagen**. Para migrar a otro equipo también se requieren las dependencias Flask/ollama, los modelos Tev1/Qwen3 y el acceso de solo lectura a los CSV. No publicar credenciales ni detalles privados del SESLAB.
