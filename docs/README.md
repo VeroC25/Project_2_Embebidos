@@ -4,21 +4,22 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 
 ## Documentos disponibles
 
-1. [Matriz de trazabilidad y estado de requerimientos](02_matriz_requerimientos.md) — compara los 16 requisitos funcionales y los 8 no funcionales de la propuesta con el desarrollo publicado, especifica evidencia disponible y pendientes de validación.
-2. [Arquitectura del sistema](03_arquitectura_del_sistema.md) — describe entornos, componentes, diagramas, interfaces de datos, decisiones de diseño e integración con Yocto, diferenciando evidencias locales y validaciones pendientes.
-3. [Implementación del detector y monitoreo de anomalías](04_implementacion_del_detector.md) — lectura y validación de CSV, parámetros actuales, detección de interrupciones y caídas de corriente, ausencia de datos, deduplicación, pruebas y limitaciones.
-4. [Integración de inteligencia artificial](05_integracion_inteligencia_artificial.md) — documenta Tev1, Qwen3, Ollama, el procesamiento de cola, los estados ante fallos, el chat contextual y los ensayos pendientes.
-5. [Interfaz gráfica y dashboard Flask](06_interfaz_grafica.md) — describe los indicadores, el histórico, las rutas web, la estimación de energía, el chat contextual, la actualización de datos y las verificaciones de despliegue.
-6. [Integración con Yocto y Raspberry Pi 4](07_integracion_yocto.md) — describe la imagen Linux, la capa meta-solarcare, recetas, servicios systemd, persistencia, empaquetado Flask y validaciones de despliegue pendientes.
-7. [Pruebas y validación](08_pruebas_y_validacion.md) — documenta los 39 casos automatizados en Ubuntu, sus evidencias y límites, y el plan de aceptación en Raspberry Pi y SESLAB.
-8. [Plantilla de registro de pruebas](evidencias/plantilla_registro_prueba.md) — formato reutilizable para dejar evidencia de resultados reales y reproducibles.
+2. [Descripción general, objetivos y alcance](01_descripcion_del_proyecto.md) — contextualiza el problema, justificación y objetivos textuales de la propuesta, alcance inicial, ampliaciones y estado real del desarrollo.
+2. [Matriz de trazabilidad y estado de requerimientos](02_matriz_requerimientos.md) — compara los 16 requisitos funcionales y los 8 no funcionales de la propuesta con el desarrollo publicado, especifica evidencia disponible y pendientes de validación.
+3. [Arquitectura del sistema](03_arquitectura_del_sistema.md) — describe entornos, componentes, diagramas, interfaces de datos, decisiones de diseño e integración con Yocto, diferenciando evidencias locales y validaciones pendientes.
+4. [Implementación del detector y monitoreo de anomalías](04_implementacion_del_detector.md) — lectura y validación de CSV, parámetros actuales, detección de interrupciones y caídas de corriente, ausencia de datos, deduplicación, pruebas y limitaciones.
+5. [Integración de inteligencia artificial](05_integracion_inteligencia_artificial.md) — documenta Tev1, Qwen3, Ollama, el procesamiento de cola, los estados ante fallos, el chat contextual y los ensayos pendientes.
+6. [Interfaz gráfica y dashboard Flask](06_interfaz_grafica.md) — describe los indicadores, el histórico, las rutas web, la estimación de energía, el chat contextual, la actualización de datos y las verificaciones de despliegue.
+7. [Integración con Yocto y Raspberry Pi 4](07_integracion_yocto.md) — describe la imagen Linux, la capa meta-solarcare, recetas, servicios systemd, persistencia, empaquetado Flask y validaciones de despliegue pendientes.
+8. [Pruebas y validación](08_pruebas_y_validacion.md) — documenta los 39 casos automatizados en Ubuntu, sus evidencias y límites, y el plan de aceptación en Raspberry Pi y SESLAB.
+9. [Plantilla de registro de pruebas](evidencias/plantilla_registro_prueba.md) — formato reutilizable para dejar evidencia de resultados reales y reproducibles.
 9. [Resultados, limitaciones y conclusiones preliminares](09_resultados_y_limitaciones.md) — consolida hallazgos de Ubuntu, estado de los 24 requisitos, conectividad SESLAB reportada y condiciones para cerrar la validación embebida.
 
 ## Documentos por desarrollar
 
 | Tema | Contenido mínimo | Estado |
 | --- | --- | --- |
-| Descripción y alcance del proyecto | Problema, objetivos, alcance y cambios respecto a la propuesta | Por redactar |
+| Descripción y alcance del proyecto | Problema, objetivos, alcance y cambios respecto a la propuesta | **Versión inicial publicada; actualizar tras validación embebida** |
 | Arquitectura del sistema | Diagrama de componentes, interfaces, archivos y flujo de eventos | **Versión inicial publicada; pendiente de evidencias embebidas** |
 | Implementación del detector | Algoritmos, umbrales, estados, deduplicación y justificación | **Versión inicial publicada; calibración y validación embebida pendientes** |
 | Agente de IA | Tev1, Qwen3, Ollama, validación y manejo de fallos | **Versión inicial publicada; validación embebida pendiente** |
