@@ -198,6 +198,12 @@ El retraso debe estimarse comparando marcas temporales sobre una base horaria co
 
 **Pendiente:** documentar protocolo autorizado, características del acceso solo lectura, condiciones de la red y manejo de una interrupción de comunicación. No publicar IP privadas, nombres de cuenta ni contraseñas.
 
+### 6.2. Avance de compilación y preparación de microSD comunicado el 12/11/2026
+
+El equipo indicó que la imagen Yocto fue **compilada y grabada en microSD**. También reportó haber comprobado en los archivos instalados soporte del módulo CIFS y de `cifs-utils` para acceder a una carpeta compartida SMB 3. La carpeta del SESLAB está identificada para uso **autorizado y de solo lectura**, pero su conexión **desde Raspberry Pi** y la identificación de la estructura de CSV siguen **sin ensayarse o sin evidencia aportada**.
+
+Este reporte se asienta como **preparación completada según el equipo**, pero la prueba Y-02 permanece **pendiente de acreditar con un log y un hash de la imagen**; Y-03 (arranque) y Y-06 (lectura remota desde Raspberry Pi) continúan sin validación. Se evitará publicar parámetros de acceso a la red privada.
+
 ## 7. Plan de aceptación en Raspberry Pi con Yocto
 
 Los casos siguientes se plantean **para ser ejecutados y documentados por el equipo** cuando la integración esté lista. Su estado es **pendiente de validación**, salvo que se agregue posteriormente evidencia real.
@@ -205,7 +211,7 @@ Los casos siguientes se plantean **para ser ejecutados y documentados por el equ
 | ID | Objetivo | Evidencia mínima | Estado |
 | --- | --- | --- | --- |
 | Y-01 | Reconocer `meta-solarcare` en BitBake | Versión de Yocto, `MACHINE`, capas reconocidas | Pendiente |
-| Y-02 | Compilar `solarcare-image` | Resumen BitBake, artefacto generado y hash | Pendiente |
+| Y-02 | Compilar `solarcare-image` | Resumen BitBake, artefacto generado y hash | **Reportada compilada/grabada; evidencia formal pendiente** |
 | Y-03 | Arrancar Raspberry Pi con la imagen | Log/identificación del sistema, kernel, fecha | Pendiente |
 | Y-04 | Iniciar Ollama local | Estado de servicio y respuesta desde loopback | Pendiente |
 | Y-05 | Inferir con Tev1 y Qwen3 | Versiones, respuestas, RAM, CPU y tiempo | Pendiente |
@@ -257,7 +263,7 @@ Se preparó una [plantilla reutilizable de evidencia](evidencias/plantilla_regis
 - **39 pruebas automatizadas aprobadas en Ubuntu** con datos históricos locales, incluyendo 3 casos dependientes de CSV no distribuidos.
 - Funcionamiento manual del detector, agente Tev1/Qwen3 y dashboard con chat en Ubuntu.
 - Conectividad con la VM y visualización de datos recientes **reportadas por el equipo**, todavía sin protocolo ni métricas de retraso anexados.
-- Recetas y servicios de Yocto publicados; ejecución integral en Raspberry Pi **sin evidencia de aceptación incorporada**.
+- Imagen Yocto **compilada y grabada en microSD según el reporte del equipo del 12/11/2026**; se revisó la presencia del soporte CIFS en los archivos instalados. Faltan logs/hashes y la ejecución integral en Raspberry Pi **no tiene evidencia de aceptación incorporada**.
 
 **Límites de inferencia:** estas comprobaciones no aportan una tasa medida de falsos positivos, un diagnóstico físico confirmado, seguridad de producción, integridad criptográfica de todos los CSV ni compatibilidad definitiva con el hardware objetivo.
 
