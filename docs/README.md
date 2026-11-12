@@ -12,6 +12,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 6. [Integración con Yocto y Raspberry Pi 4](07_integracion_yocto.md) — describe la imagen Linux, la capa meta-solarcare, recetas, servicios systemd, persistencia, empaquetado Flask y validaciones de despliegue pendientes.
 7. [Pruebas y validación](08_pruebas_y_validacion.md) — documenta los 39 casos automatizados en Ubuntu, sus evidencias y límites, y el plan de aceptación en Raspberry Pi y SESLAB.
 8. [Plantilla de registro de pruebas](evidencias/plantilla_registro_prueba.md) — formato reutilizable para dejar evidencia de resultados reales y reproducibles.
+9. [Resultados, limitaciones y conclusiones preliminares](09_resultados_y_limitaciones.md) — consolida hallazgos de Ubuntu, estado de los 24 requisitos, conectividad SESLAB reportada y condiciones para cerrar la validación embebida.
 
 ## Documentos por desarrollar
 
@@ -24,7 +25,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 | Interfaz gráfica | Flask, rutas, dashboard, chat, origen y frescura de los datos | **Versión inicial publicada; ajustes de rutas y despliegue en Yocto pendientes** |
 | Integración embebida | Recetas de Yocto, servicios systemd, despliegue y almacenamiento | **Documentación inicial publicada; faltan pruebas de imagen y Raspberry Pi** |
 | Pruebas y resultados | Casos, métodos, comandos, registros, mediciones y capturas | **Plan y catálogo publicados; registros formales y validación embebida en recopilación** |
-| Limitaciones y conclusiones | Resultados verificados, requisitos incompletos y trabajo futuro | Por redactar |
+| Limitaciones y conclusiones | Resultados verificados, requisitos incompletos y trabajo futuro | **Versión preliminar publicada; conclusiones finales dependen de evidencias Raspberry Pi** |
 
 ## Documento de referencia
 
