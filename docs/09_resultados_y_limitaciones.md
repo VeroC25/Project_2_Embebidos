@@ -13,6 +13,14 @@ El equipo también **reportó haber conseguido conexión con la máquina virtual
 
 La rama de integración de Verónica incorpora scripts y la interfaz al árbol de trabajo, junto con recetas, servicios `systemd` y almacenamiento previsto para Raspberry Pi 4. **La presencia de estos archivos no constituye evidencia de compilación de imagen, arranque ni operación integral**. El cierre del proyecto depende de esas verificaciones y de los criterios aún incompletos de la propuesta.
 
+### Actualización de estado — 12 de noviembre de 2026
+
+**Nuevo avance comunicado por el equipo:** la imagen Yocto se **compiló y grabó en una microSD**. Se comprobó mediante inspección de los archivos instalados la inclusión de soporte para el protocolo **SMB/CIFS** y la herramienta `mount.cifs`; se definió una carpeta compartida autorizada para leer los CSV del inversor 2.
+
+Estos hechos modifican el estado de **preparación de plataforma** respecto del corte documental inicial, pero no permiten acreditar aún **arranque en Raspberry Pi**, **montaje SMB desde el dispositivo**, **ejecución de Ollama/Tev1/Qwen3**, **servicios de SolarCare activos**, ni **Flask operando en la imagen**. La compilación y la grabación todavía necesitan el log y las sumas de comprobación correspondientes para cerrar formalmente las evidencias Y-02.
+
+Los identificadores de red, cuentas y credenciales facilitados para la prueba se consideran **información operativa restringida** y no deben incorporarse a GitHub público.
+
 ## 2. Resultados técnicos comprobados o reportados
 
 La siguiente clasificación diferencia resultados observados de implementaciones que necesitan validación adicional.
@@ -186,7 +194,7 @@ La rama `feature/solarcare-integracion` de Verónica incorpora las recetas, serv
 - Unificación y persistencia de los directorios usados por detector, trabajador y dashboard.
 - Medición de RAM, CPU, disco y latencia, incluyendo el caso de IA no disponible.
 
-La existencia de configuración en GitHub **no garantiza** que una imagen haya compilado, arrancado o pasado una prueba final. La prueba en Raspberry Pi es la evidencia requerida para cerrar estos puntos.
+El equipo **reportó posteriormente que la imagen compiló y fue grabada en microSD**. Esto aún no garantiza que haya **arrancado o superado las pruebas de aceptación en Raspberry Pi**; se requieren logs, identificación del sistema en ejecución y pruebas integrales.
 
 ### 6.6. Seguridad, datos institucionales y presentación
 
@@ -218,7 +226,7 @@ La siguiente tabla debe actualizarse **únicamente cuando existan evidencias de 
 
 | Entregable esperado | Estado documentado al corte | Referencia futura |
 | --- | --- | --- |
-| Imagen Yocto construida | No verificado mediante evidencia adjunta | Y-01, Y-02 |
+| Imagen Yocto construida y grabada en microSD | **Reportado como completado (12/11); logs de compilación y hash pendientes de adjuntar** | Y-01, Y-02 |
 | Raspberry Pi arrancando con esa imagen | No verificado mediante evidencia adjunta | Y-03 |
 | Ollama/Tev1/Qwen3 operativos en Raspberry Pi | No verificado mediante evidencia adjunta | Y-04, Y-05 |
 | Adquisición/lectura remota desde Raspberry Pi | No verificado mediante evidencia adjunta | Y-06 |
