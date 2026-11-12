@@ -24,3 +24,7 @@ solarcare-modelos/
 *~
 __pycache__/
 *.pyc
+
+# Enlace simbólico local hacia los binarios de Ollama.
+yocto/meta-solarcare/recipes-ai/ollama/files/ollama-cpu
+/datos/

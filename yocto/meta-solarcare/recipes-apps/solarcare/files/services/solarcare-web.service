@@ -1,0 +1,27 @@
+[Unit]
+Description=SolarCare AI - Interfaz web
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/solarcare/web
+
+# Configurar el acceso a la interfaz desde la red local.
+Environment=SOLARCARE_HOST=0.0.0.0
+Environment=SOLARCARE_PORT=8091
+
+# Utilizar los directorios persistentes de SolarCare.
+Environment=SOLARCARE_SALIDAS=/var/lib/solarcare/salidas
+Environment=SOLARCARE_CSV_RAIZ=/var/lib/solarcare/datos/Inversor 2
+
+# Configurar la comunicación opcional con Ollama.
+Environment=SOLARCARE_OLLAMA_URL=http://127.0.0.1:11434
+Environment=SOLARCARE_CHAT_MODEL=qwen3:1.7b
+
+# Ejecutar Flask y reiniciarlo si el proceso falla.
+ExecStart=/usr/bin/python3 -u /opt/solarcare/web/app.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

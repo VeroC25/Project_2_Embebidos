@@ -27,6 +27,7 @@ SOURCE_ROOT = os.getenv("SOLARCARE_CSV_RAIZ", "").strip()
 OLLAMA_URL = os.getenv("SOLARCARE_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
 CHAT_MODEL = os.getenv("SOLARCARE_CHAT_MODEL", "qwen3:1.7b")
 PORT = int(os.getenv("SOLARCARE_PORT", "8091"))
+HOST = os.getenv("SOLARCARE_HOST", "127.0.0.1")
 # Habilitar datos simulados únicamente durante pruebas.
 DEMO_ENABLED = os.getenv("SOLARCARE_DEMO", "0") == "1"
 app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -130,10 +131,58 @@ def _read_alerts(max_rows: int = 200) -> list[dict]:
 
 
 def _csv_path(chosen_date: str | None) -> Path | None:
-    if SOURCE_ROOT:
-        day = chosen_date or date.today().isoformat()
-        return (Path(SOURCE_ROOT).expanduser().resolve() / day / f"{day}.csv")
-    return Path(SOURCE_CSV).expanduser().resolve() if SOURCE_CSV else None
+    """Localiza CSV diarios en las estructuras históricas y del SESLAB."""
+    if not SOURCE_ROOT:
+        return Path(SOURCE_CSV).expanduser().resolve() if SOURCE_CSV else None
+
+    raiz = Path(SOURCE_ROOT).expanduser().resolve()
+
+    if not raiz.is_dir():
+        return None
+
+    # Admitir tanto la carpeta del inversor como la raíz compartida.
+    carpetas = [raiz]
+
+    for nombre in ("Inversor 2", "Registro inversor 2"):
+        carpeta = raiz / nombre
+        if carpeta.is_dir():
+            carpetas.append(carpeta)
+
+    # Buscar la fecha solicitada en carpetas diarias o mensuales.
+    if chosen_date:
+        nombre_csv = f"{chosen_date}.csv"
+
+        for carpeta in carpetas:
+            candidatos = [
+                carpeta / nombre_csv,
+                carpeta / chosen_date / nombre_csv,
+            ]
+
+            for candidato in candidatos:
+                if candidato.is_file():
+                    return candidato
+
+            encontrados = sorted(carpeta.glob(f"*/{nombre_csv}"))
+
+            if encontrados:
+                return encontrados[0]
+
+        return None
+
+    # Utilizar el último CSV disponible cuando no se selecciona fecha.
+    archivos = []
+
+    for carpeta in carpetas:
+        archivos.extend(carpeta.glob("????-??-??.csv"))
+        archivos.extend(carpeta.glob("*/????-??-??.csv"))
+
+    archivos = [
+        archivo_csv
+        for archivo_csv in archivos
+        if _safe_date(archivo_csv.stem)
+    ]
+
+    return max(archivos, key=lambda p: p.stem) if archivos else None
 
 
 def _read_csv_measurements(chosen_date: str | None = None) -> dict | None:
@@ -418,7 +467,7 @@ def chat():
             "Si no hay una variable, decí explícitamente que no está disponible. "
             "Si la pregunta nombra un tipo de evento distinto al seleccionado, aclaralo y pedí seleccionar el correcto. "
             "No afirmés operación en vivo, fallas físicas confirmadas o duración exacta cuando sea cota superior. "
-            "La puntuación Tev1 no es probabilidad de falla calibrada. "
+            "La puntuación Tev1 no es probabilidad de falla calibrada. ""No afirmes cambios bruscos, fluctuaciones, desequilibrios ni tendencias de tensión o corriente sin comparar numéricamente muestras del mismo parámetro en distintos instantes. ""No atribuyas una causa probable a fallas de red, protecciones, irradiancia o control sin evidencia específica. Presentalas únicamente como hipótesis no verificadas. ""No confundas las mediciones del evento con las últimas mediciones del día. Indicá a qué instante corresponde cada valor. ""Si faltan registros de alarmas, irradiancia o estado operativo, explicá que no es posible determinar la causa física. "
             "Nunca recomendés manipular equipos energizados; las inspecciones corresponden a personal autorizado. "
             "No ejecutás acciones de control sobre el inversor."
         ),
@@ -500,4 +549,4 @@ if __name__ == "__main__":
     print("SolarCare AI | Dashboard v2 · tema claro")
     print(f"Abrí en Firefox: http://127.0.0.1:{PORT}")
     print("Datos locales de solo lectura; preguntas a Qwen3 mediante Ollama local.")
-    app.run(host="127.0.0.1", port=PORT, debug=False)
+    app.run(host=HOST, port=PORT, debug=False)

@@ -13,7 +13,9 @@ IMAGE_INSTALL:append = " \
     openssh \
     solarcare \
     ollama \
+    python3-ollama \
     solarcare-storage \
+    cifs-utils \
     parted \
     e2fsprogs-resize2fs \
     util-linux-findmnt \
