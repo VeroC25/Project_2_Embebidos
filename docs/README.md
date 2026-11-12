@@ -5,13 +5,14 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 ## Documentos disponibles
 
 1. [Matriz de trazabilidad y estado de requerimientos](02_matriz_requerimientos.md) — compara los 16 requisitos funcionales y los 8 no funcionales de la propuesta con el desarrollo publicado, especifica evidencia disponible y pendientes de validación.
+2. [Arquitectura del sistema](03_arquitectura_del_sistema.md) — describe entornos, componentes, diagramas, interfaces de datos, decisiones de diseño e integración con Yocto, diferenciando evidencias locales y validaciones pendientes.
 
 ## Documentos por desarrollar
 
 | Tema | Contenido mínimo | Estado |
 | --- | --- | --- |
 | Descripción y alcance del proyecto | Problema, objetivos, alcance y cambios respecto a la propuesta | Por redactar |
-| Arquitectura del sistema | Diagrama de componentes, interfaces, archivos y flujo de eventos | Por redactar |
+| Arquitectura del sistema | Diagrama de componentes, interfaces, archivos y flujo de eventos | **Versión inicial publicada; pendiente de evidencias embebidas** |
 | Implementación del detector | Algoritmos, umbrales, estados, deduplicación y justificación | Por redactar |
 | Agente de IA | Tev1, Qwen3, Ollama, validación y manejo de fallos | Por redactar |
 | Interfaz gráfica | Flask, rutas, dashboard, chat, origen y frescura de los datos | Por redactar |
