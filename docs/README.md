@@ -8,6 +8,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 2. [Arquitectura del sistema](03_arquitectura_del_sistema.md) — describe entornos, componentes, diagramas, interfaces de datos, decisiones de diseño e integración con Yocto, diferenciando evidencias locales y validaciones pendientes.
 3. [Implementación del detector y monitoreo de anomalías](04_implementacion_del_detector.md) — lectura y validación de CSV, parámetros actuales, detección de interrupciones y caídas de corriente, ausencia de datos, deduplicación, pruebas y limitaciones.
 4. [Integración de inteligencia artificial](05_integracion_inteligencia_artificial.md) — documenta Tev1, Qwen3, Ollama, el procesamiento de cola, los estados ante fallos, el chat contextual y los ensayos pendientes.
+5. [Interfaz gráfica y dashboard Flask](06_interfaz_grafica.md) — describe los indicadores, el histórico, las rutas web, la estimación de energía, el chat contextual, la actualización de datos y las verificaciones de despliegue.
 
 ## Documentos por desarrollar
 
@@ -17,7 +18,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 | Arquitectura del sistema | Diagrama de componentes, interfaces, archivos y flujo de eventos | **Versión inicial publicada; pendiente de evidencias embebidas** |
 | Implementación del detector | Algoritmos, umbrales, estados, deduplicación y justificación | **Versión inicial publicada; calibración y validación embebida pendientes** |
 | Agente de IA | Tev1, Qwen3, Ollama, validación y manejo de fallos | **Versión inicial publicada; validación embebida pendiente** |
-| Interfaz gráfica | Flask, rutas, dashboard, chat, origen y frescura de los datos | Por redactar |
+| Interfaz gráfica | Flask, rutas, dashboard, chat, origen y frescura de los datos | **Versión inicial publicada; ajustes de rutas y despliegue en Yocto pendientes** |
 | Integración embebida | Recetas de Yocto, servicios systemd, despliegue y almacenamiento | Pendiente de evidencias finales |
 | Pruebas y resultados | Casos, métodos, comandos, registros, mediciones y capturas | En recopilación |
 | Limitaciones y conclusiones | Resultados verificados, requisitos incompletos y trabajo futuro | Por redactar |
