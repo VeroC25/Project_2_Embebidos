@@ -24,3 +24,16 @@ solarcare-modelos/
 *~
 __pycache__/
 *.pyc
+
+# SolarCare AI - archivos locales y datos
+/software/tests/datos_historicos
+**/datos_historicos/
+**/datos_procesados/
+**/salidas/
+**/.venv/
+**/.pytest_cache/
+**/*.respaldo*
+**/*.antes_contexto_chat
+*.joblib
+.env
+.env.*
