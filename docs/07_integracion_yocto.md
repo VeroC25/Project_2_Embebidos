@@ -5,6 +5,16 @@
 > **Responsabilidad principal de implementación embebida:** integración Yocto y Raspberry Pi desarrollada por Verónica; documentación técnica y trazabilidad a cargo del equipo.  
 > **Estado:** recetas, servicios y aplicación incluidos en distintas partes de la rama de integración; **compilación de imagen, arranque y flujo completo en Raspberry Pi pendientes de evidencia documentada**.
 
+## Actualización de integración — 12 de noviembre de 2026
+
+Según el reporte técnico compartido por el equipo, **la imagen Linux de Yocto ya se compiló y grabó en una microSD destinada a Raspberry Pi 4 (8 GB RAM)**. Se comunicó asimismo una inspección del sistema de archivos preparado en la microSD que confirmó la presencia del módulo de kernel **CIFS** y de **cifs-utils 7.4**, incluida la herramienta `mount.cifs`. Esta información constituye un **avance reportado de preparación de imagen y dependencias**, no una prueba de ejecución de la Raspberry Pi.
+
+Para acceder a las mediciones, el equipo definió una **carpeta SMB 3 del servidor Windows del SESLAB**; se proyecta montarla en modo **solo lectura** y utilizar la subcarpeta correspondiente al inversor 2. **Todavía no está demostrado** que la Raspberry Pi pueda alcanzar el servidor, autenticar y montar ese recurso, localizar los CSV esperados ni procesarlos automáticamente.
+
+**Evidencias por incorporar:** versión/commit de la compilación, salida final de BitBake, nombre y suma de comprobación de la imagen, registro de grabación, evidencia de paquetes inspeccionados y prueba posterior de arranque y montaje autorizado. **No incluir** direcciones IP privadas, nombres de cuenta, credenciales, rutas de red internas o información institucional de acceso en este repositorio público.
+
+**Incompatibilidad de rutas por comprobar:** el monitor espera `<raiz>/YYYY-MM-DD/YYYY-MM-DD.csv`, pero algunos históricos están organizados por **mes**. Antes de habilitar la supervisión continua se debe inspeccionar la estructura accesible desde Raspberry Pi y, si corresponde, ajustar el origen lógico de los CSV. El montaje SMB en sí **no garantiza** que el monitor encuentre archivos.
+
 ## 1. Objetivo de la integración
 
 La finalidad de Yocto Project en SolarCare AI es generar una distribución Linux adaptada a Raspberry Pi 4 que pueda ejecutar los componentes del sistema de forma coordinada: lectura de archivos CSV del SESLAB, detección determinista de anomalías, persistencia de alertas, procesamiento local con Tev1 y Qwen3 mediante Ollama y visualización de resultados.
@@ -110,7 +120,7 @@ Para un resultado reproducible se necesita documentar, como mínimo:
 - Comando de compilación y resultado observado.
 - Nombre, tamaño, tipo y comprobación de integridad del artefacto de imagen obtenido.
 
-El comando previsto en un entorno Yocto configurado es `bitbake solarcare-image`. **No se ha adjuntado evidencia en GitHub de que esta compilación haya terminado satisfactoriamente**.
+El comando previsto en un entorno Yocto configurado es `bitbake solarcare-image`. **El equipo reportó la compilación finalizada y la imagen grabada en microSD; todavía no hay log de compilación, hash o archivo de salida adjuntados en GitHub para verificarla independientemente**.
 
 ## 4. Receta de Ollama y servicio de inferencia
 
@@ -283,7 +293,7 @@ La validación de Yocto debe documentar **lo ejecutado realmente**, diferenciand
 | ID | Prueba de aceptación | Evidencia que debe incorporarse | Estado |
 | --- | --- | --- | --- |
 | Y-01 | La capa `meta-solarcare` se reconoce en la compilación | Lista de capas, versión de Yocto y `MACHINE` | Pendiente de adjuntar |
-| Y-02 | La imagen `solarcare-image` compila correctamente | Log o resumen de BitBake, archivo de salida y checksum | Pendiente de adjuntar |
+| Y-02 | La imagen `solarcare-image` compila correctamente | Log o resumen de BitBake, archivo de salida y checksum | **Compilación y grabación reportadas (12/11); evidencia formal pendiente de adjuntar** |
 | Y-03 | La Raspberry Pi inicia la imagen construida | Captura/log de arranque, identificación del sistema y kernel | Pendiente de adjuntar |
 | Y-04 | Ollama está disponible en loopback | Estado de `ollama.service` y respuesta al servicio | Pendiente de adjuntar |
 | Y-05 | Tev1 y Qwen3 responden en Raspberry Pi | Logs de inferencia con versión, tiempos y recursos | Pendiente de adjuntar |
