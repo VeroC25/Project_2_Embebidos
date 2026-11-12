@@ -4,7 +4,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 
 ## Documentos disponibles
 
-2. [Descripción general, objetivos y alcance](01_descripcion_del_proyecto.md) — contextualiza el problema, justificación y objetivos textuales de la propuesta, alcance inicial, ampliaciones y estado real del desarrollo.
+1. [Descripción general, objetivos y alcance](01_descripcion_del_proyecto.md) — contextualiza el problema, justificación y objetivos textuales de la propuesta, alcance inicial, ampliaciones y estado real del desarrollo.
 2. [Matriz de trazabilidad y estado de requerimientos](02_matriz_requerimientos.md) — compara los 16 requisitos funcionales y los 8 no funcionales de la propuesta con el desarrollo publicado, especifica evidencia disponible y pendientes de validación.
 3. [Arquitectura del sistema](03_arquitectura_del_sistema.md) — describe entornos, componentes, diagramas, interfaces de datos, decisiones de diseño e integración con Yocto, diferenciando evidencias locales y validaciones pendientes.
 4. [Implementación del detector y monitoreo de anomalías](04_implementacion_del_detector.md) — lectura y validación de CSV, parámetros actuales, detección de interrupciones y caídas de corriente, ausencia de datos, deduplicación, pruebas y limitaciones.
@@ -13,7 +13,7 @@ La documentación de **SolarCare AI** se mantiene en Markdown para que cada camb
 7. [Integración con Yocto y Raspberry Pi 4](07_integracion_yocto.md) — describe la imagen Linux, la capa meta-solarcare, recetas, servicios systemd, persistencia, empaquetado Flask y validaciones de despliegue pendientes.
 8. [Pruebas y validación](08_pruebas_y_validacion.md) — documenta los 39 casos automatizados en Ubuntu, sus evidencias y límites, y el plan de aceptación en Raspberry Pi y SESLAB.
 9. [Plantilla de registro de pruebas](evidencias/plantilla_registro_prueba.md) — formato reutilizable para dejar evidencia de resultados reales y reproducibles.
-9. [Resultados, limitaciones y conclusiones preliminares](09_resultados_y_limitaciones.md) — consolida hallazgos de Ubuntu, estado de los 24 requisitos, conectividad SESLAB reportada y condiciones para cerrar la validación embebida.
+10. [Resultados, limitaciones y conclusiones preliminares](09_resultados_y_limitaciones.md) — consolida hallazgos de Ubuntu, estado de los 24 requisitos, conectividad SESLAB reportada y condiciones para cerrar la validación embebida.
 
 ## Documentos por desarrollar
 
